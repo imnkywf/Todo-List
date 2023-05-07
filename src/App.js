@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './Components/Header/index'
+import List from './Components/List/index'
+// import Footer from './Components/Footer/index'
+
+
+export default class App extends React.Component {
+  state = {
+    data: [
+      { id: 1, msg: 'eat', checked: true },
+      { id: 2, msg: 'drink', checked: false },
+      { id: 3, msg: 'sleep' , checked: true},
+    ]
+  }
+
+  getChildState = (data) => {
+    this.setState({ data: [...data] })
+  }
+
+  getRemoveIndex = (index) => {
+    const { data } = this.state
+    data.splice(index, 1)
+
+    // console.log(data[index])
+    this.setState({ data: data })
+  }
+
+  render() {
+    return (
+      <div className='container'>
+        <Header data={this.state.data} getState={this.getChildState} />
+        <List data={this.state.data} getRemoveIndex={this.getRemoveIndex} />
+      </div>
+    )
+  }
 }
-
-export default App;

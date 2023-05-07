@@ -1,0 +1,21 @@
+.items li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.items li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.items li span {
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: #fff;
+}
